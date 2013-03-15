@@ -27,9 +27,9 @@ public class DesenvolvimentoDatabaseConfig implements DatabaseConfig {
 	public DataSource dataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://localhost:3306/site");
+		dataSource.setUrl("jdbc:mysql://localhost:3306/db");
 		dataSource.setUsername("root");
-		dataSource.setPassword("Edu13546");
+		dataSource.setPassword("xxxx");
 		dataSource.setTestOnBorrow(true);
 		dataSource.setTestOnReturn(true);
 		dataSource.setTestWhileIdle(true);
