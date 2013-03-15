@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+
+	<persistence-context />
+	
+	<view-state id="conteudoList">
+	    <on-entry>
+	        <evaluate expression="conteudoController.newFiltro()" result="viewScope.filtro" />
+	        <evaluate expression="conteudoController.getMapTopicos()" result="viewScope.topicos"  />
+	    </on-entry>
+	    <on-render>
+	        <evaluate expression="conteudoController.filtrar(filtro)" result="viewScope.conteudos" result-type="dataModel" />
+	    </on-render>
+	</view-state>
+
+	<view-state id="conteudoNovo">
+		<on-entry>
+			<evaluate expression="conteudoController.getTopicos()" result="viewScope.topicos" result-type="dataModel" />
+			<evaluate expression="conteudoController.getMapTopicos()" result="viewScope.topicos2" />
+			<evaluate expression="conteudoController.newConteudo()" result="viewScope.conteudo" />
+		</on-entry>
+		<transition on="save">
+		    <evaluate expression="conteudoController.save(conteudo)" />
+		</transition>
+	</view-state>
+
+	<end-state id="ok" commit="true" />
+</flow>

@@ -1,0 +1,24 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template/ui.xhtml">
+	<ui:define name="content">
+		<h:form id="form">
+			<h:outputText value="Tipico" styleClass="title" />
+			<p:fieldset legend="Criar novo topico">
+				<h:panelGrid columns="2" columnClasses="label">
+					<p:outputLabel for="title" value="Titúlo do tópico" />
+					<p:inputText id="title" value="#{topico.title}" />
+
+					<p:commandButton value="Salval" action="save" />
+					<p:commandButton value="Cancelar" />
+
+				</h:panelGrid>
+			</p:fieldset>
+			<p:spacer height="3" />
+			<p:spacer height="3" />
+		</h:form>
+	</ui:define>
+</ui:composition>

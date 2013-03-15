@@ -1,0 +1,29 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template/ui.xhtml">
+
+	<ui:define name="contentleft">
+		<h:form id="topico">
+			<p:dataTable var="t" value="#{topicos}">
+				<p:column headerText="Tópicos">
+					<p:commandLink action="selectTopico" value="#{t.title}" update=":form:conteudos" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form id="form">
+			<p:accordionPanel id="conteudos" value="#{conteudos}" var="c">
+				<p:tab title="#{c.title}">
+					<h:outputText id="texto" escape="false"  value="#{c.texto}" />
+				</p:tab>  
+			</p:accordionPanel>
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+
