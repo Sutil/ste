@@ -28,6 +28,10 @@
 		<param-value>Development</param-value>
 	</context-param>
 	<context-param>
+		<param-name>javax.faces.FACELETS_REFRESH_PERIOD</param-name>
+		<param-value>0</param-value>
+	</context-param>
+	<context-param>
 		<param-name>com.sun.faces.defaultResourceMaxAge</param-name>
 		<param-value>3600000</param-value>
 	</context-param>
@@ -37,7 +41,7 @@
 	</context-param>
 	<context-param>
 		<param-name>primefaces.THEME</param-name>
-		<param-value>cupertino</param-value>
+		<param-value>black-tie</param-value>
 	</context-param>
 	<!-- <filter> -->
 	<!-- <filter-name>springSecurityFilterChain</filter-name> -->

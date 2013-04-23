@@ -15,6 +15,9 @@
 	    <on-render>
 	        <evaluate expression="conteudoController.filtrar(filtro)" result="viewScope.conteudos" result-type="dataModel" />
 	    </on-render>
+	    <transition on="delete" to="ok">
+	        <evaluate expression="conteudoController.delete(conteudos.selectedRow, messageContext)" />
+	    </transition>
 	</view-state>
 
 	<view-state id="conteudoNovo">

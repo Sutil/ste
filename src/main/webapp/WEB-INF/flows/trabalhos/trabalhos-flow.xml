@@ -7,8 +7,8 @@
 
 	<persistence-context />
 
-	<view-state id="home">
-		<on-entry>
+	<view-state id="trabalhos">
+	    <on-entry>
 			<evaluate expression="homeController.newImageBean()" result="viewScope.imageBean"  />
 		</on-entry>
 	</view-state>

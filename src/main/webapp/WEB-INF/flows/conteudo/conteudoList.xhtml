@@ -5,48 +5,57 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/template/ui.xhtml">
 
-	<ui:define name="contentleft">
-		<h:form id="filtro">
-			<h:panelGrid columns="1">
-				<p:outputLabel for="topicos" value="Topicos: " />
-				<p:selectCheckboxMenu value="#{filtro.topicos}" id="topicos"
-					filter="true" filterMatchMode="startsWith" panelStyle="width:250px"
-					style="width:160px;" converter="topicoConverter">
-
-					<f:selectItems value="#{topicos}" />
-
-				</p:selectCheckboxMenu>
-
-				<p:outputLabel for="titulo" value="Titulo: " />
-				<p:inputText id="titulo" value="#{filtro.titulo}" />
-
-				<p:commandButton value="Pesquisar" update=":formConteudos:tabela" />
-
-			</h:panelGrid>
-		</h:form>
-	</ui:define>
-
 	<ui:define name="content">
-		<h:form id="formConteudos">
-			<h:outputText value="Conteúdo" styleClass="title" />
-			<p:fieldset id="tabela" legend="Lista de Conteúdos">
-				<p:dataTable value="#{conteudos}" var="c" rows="15" paginator="true"
-					paginatorPosition="bottom">
 
-					<p:column headerText="Tópico"
-						style="text-align: center; width: 150px">
-						<h:outputText value="#{c.topico.title}" />
-					</p:column>
-					<p:column headerText="Título">
-						<h:outputText value="#{c.title}" />
-					</p:column>
-					<p:column headerText="Opções"
-						style="text-align:center; width: 30px">
-						<p:commandButton icon="ui-icon-info" />
-					</p:column>
-				</p:dataTable>
-			</p:fieldset>
-		</h:form>
+		<p:layout fullPage="false" style="width:930px;height:620px;">
+			<p:layoutUnit position="west">
+				<h:form id="filtro">
+					<h:panelGrid columns="1">
+						<p:outputLabel for="topicos" value="Topicos: " />
+						<p:selectCheckboxMenu value="#{filtro.topicos}" id="topicos"
+							filter="true" filterMatchMode="startsWith"
+							panelStyle="width:250px" style="width:160px;"
+							converter="topicoConverter">
+
+							<f:selectItems value="#{topicos}" />
+
+						</p:selectCheckboxMenu>
+
+						<p:outputLabel for="titulo" value="Titulo: " />
+						<p:inputText id="titulo" value="#{filtro.titulo}" />
+
+						<p:commandButton value="Pesquisar" update=":formConteudos:tabela" />
+
+					</h:panelGrid>
+				</h:form>
+
+			</p:layoutUnit>
+
+			<p:layoutUnit position="center">
+				<h:form id="formConteudos">
+					<h:outputText value="Conteúdo" styleClass="title" />
+					<p:fieldset id="tabela" legend="Lista de Conteúdos">
+						<p:dataTable value="#{conteudos}" var="c" rows="15"
+							paginator="true" paginatorPosition="bottom">
+
+							<p:column headerText="Tópico"
+								style="text-align: center; width: 150px">
+								<h:outputText value="#{c.topico.title}" />
+							</p:column>
+							<p:column headerText="Título">
+								<h:outputText value="#{c.title}" />
+							</p:column>
+							<p:column headerText="Opções"
+								style="text-align:center; width: 30px">
+								<p:commandButton icon="ui-icon-pencil" action="edit" />
+								<p:commandButton icon="ui-icon-trash" action="delete" />
+							</p:column>
+						</p:dataTable>
+					</p:fieldset>
+				</h:form>
+			</p:layoutUnit>
+		</p:layout>
+
 	</ui:define>
 </ui:composition>
 

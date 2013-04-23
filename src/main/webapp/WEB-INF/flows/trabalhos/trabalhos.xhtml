@@ -1,0 +1,62 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template/ui.xhtml">
+	
+	<ui:define name="rigth">
+		<div id="sidebar_container">
+			<div class="sidebar">
+				<h3>Ferramentas</h3>
+				<p:imageSwitch effect="fade">
+					<ui:repeat var="image" value="#{imageBean.images}">
+						<p:graphicImage value="#{image}" />
+					</ui:repeat>
+				</p:imageSwitch>
+
+			</div>
+			<div class="sidebar">
+				<h3>Links interessantes</h3>
+				<ul>
+					<li><a href="http://developer.android.com/" target="_blank">Android</a></li>
+					<li><a href="http://primefaces.org/" target="_blank">Primefaces</a></li>
+					<li><a href="http://jquery.com/" target="_blank">jQuery</a></li>
+					<li><a
+						href="http://code.google.com/p/guava-libraries/wiki/GuavaExplained"
+						target="_blank">Guava</a></li>
+				</ul>
+			</div>
+		</div>
+	</ui:define>
+
+
+	<ui:define name="content">
+
+		<h1>Mobile</h1>
+
+		<h3>Sistema de força de venda para indústria de confecção - Produtec</h3>
+		<h:panelGrid columns="2">
+
+			<p:graphicImage value="#{resource['images:tab1.png']}" height="200" />
+
+			<h:outputText escape="false"
+				value="Implementado em Android, o resultado foi um sistema leve, com interface de fácil usabilidade e funcional. Botões confortáveis ao toque e fácil interpretação do usuário." />
+			
+			<h:outputText escape="false"
+			value="O uso de gráfico de pizza para demonstrar resultados do pedido de venda embelezou a aplicação. O uso da biblioteca de gráficos auxilia na construção rápida de plotagem de resultados e permite uma demonstração simples de resultados complexos." />
+			
+			<p:graphicImage value="#{resource['images:tab2.png']}" height="200" />
+			
+			<p:graphicImage value="#{resource['images:tab3.png']}" height="200"/>
+			
+			<h:outputText escape="false"
+			value="A compactação de dados garantiu uma transmissão de dados veloz permitindo sincronização direta com a indústria. O usuário envia pedidos e novos cadastros de clientes e recebe os produtos e tabelas de preços usando rede 3G."/>
+			
+
+		</h:panelGrid>
+
+	</ui:define>
+
+</ui:composition>
+

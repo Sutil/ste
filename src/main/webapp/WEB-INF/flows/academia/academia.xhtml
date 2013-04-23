@@ -1,0 +1,43 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template/ui.xhtml">
+
+	<ui:define name="content">
+
+		<p:layout fullPage="false" style="width:930px;height:620px;">
+
+
+			<p:layoutUnit position="west" size="200" header="Tópicos"
+				resizable="true" collapsible="true" gutter="5" effect="slide" effectSpeed="2">
+				<h:form id="formTopicos">
+					<p:dataTable var="t" value="#{bean.topicos}">
+						<p:column>
+							<p:commandLink value="#{t.title}" actionListener="#{bean.selectTopico(t)}" update=":formConteudos" styleClass="topico" />
+						</p:column>
+					</p:dataTable>
+
+				</h:form>
+			</p:layoutUnit>
+
+
+			<p:layoutUnit position="center">
+			<h:form id="formConteudos" >
+				<p:accordionPanel value="#{bean.conteudosSelecionados}" var="c" multiple="true">
+					<p:tab title="#{c.title}" >
+						<h:outputText value="#{c.texto}" escape="false"/>
+					</p:tab>
+				</p:accordionPanel>
+				</h:form>
+			</p:layoutUnit>
+
+		</p:layout>
+
+	</ui:define>
+
+
+
+</ui:composition>
+

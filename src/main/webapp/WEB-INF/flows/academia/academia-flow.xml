@@ -7,10 +7,11 @@
 
 	<persistence-context />
 
-	<view-state id="home">
+	<view-state id="academia">
 		<on-entry>
-			<evaluate expression="homeController.newImageBean()" result="viewScope.imageBean"  />
+			<evaluate expression="academiaController.newBean()" result="viewScope.bean"  />
 		</on-entry>
 	</view-state>
 
+	<end-state id="ok" commit="true" />
 </flow>

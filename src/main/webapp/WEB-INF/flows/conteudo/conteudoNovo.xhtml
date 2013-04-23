@@ -5,15 +5,7 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/template/ui.xhtml">
 
-	<ui:define name="contentleft">
-		<h:form id="topico">
-			<p:dataTable var="t" value="#{topicos}">
-				<p:column headerText="Tópicos">
-					<p:commandLink value="#{t.title}" />
-				</p:column>
-			</p:dataTable>
-		</h:form>
-	</ui:define>
+	
 
 	<ui:define name="content">
 		<h:form id="form">

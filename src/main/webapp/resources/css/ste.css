@@ -12,6 +12,11 @@ body {
 	text-align: right;
 }
 
+.topico {
+	font-size: 17px;
+	font-weight: bold;
+}
+
 .text {
 	font-family: fantasy;
 	font-size: 20px;

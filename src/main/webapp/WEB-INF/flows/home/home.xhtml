@@ -5,25 +5,54 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/template/ui.xhtml">
 
-	<ui:define name="contentleft">
-		<h:form id="topico">
-			<p:dataTable var="t" value="#{topicos}">
-				<p:column headerText="Tópicos">
-					<p:commandLink action="selectTopico" value="#{t.title}" update=":form:conteudos" />
-				</p:column>
-			</p:dataTable>
-		</h:form>
+
+	<ui:define name="rigth">
+		<div id="sidebar_container">
+			<div class="sidebar">
+				<h3>Ferramentas</h3>
+				<p:imageSwitch effect="fade">
+					<ui:repeat var="image" value="#{imageBean.images}">
+						<p:graphicImage value="#{image}" />
+					</ui:repeat>
+				</p:imageSwitch>
+
+			</div>
+			<div class="sidebar">
+				<h3>Links interessantes</h3>
+				<ul>
+					<li><a href="http://developer.android.com/" target="_blank">Android</a></li>
+					<li><a href="http://primefaces.org/" target="_blank">Primefaces</a></li>
+					<li><a href="http://jquery.com/" target="_blank">jQuery</a></li>
+					<li><a
+						href="http://code.google.com/p/guava-libraries/wiki/GuavaExplained"
+						target="_blank">Guava</a></li>
+				</ul>
+			</div>
+		</div>
 	</ui:define>
+
+
 
 	<ui:define name="content">
-		<h:form id="form">
-			<p:accordionPanel id="conteudos" value="#{conteudos}" var="c">
-				<p:tab title="#{c.title}">
-					<h:outputText id="texto" escape="false"  value="#{c.texto}" />
-				</p:tab>  
-			</p:accordionPanel>
 
-		</h:form>
+		<h1>Apresentação</h1>
+		<h:panelGrid columns="2">
+
+			<p:graphicImage value="#{resource['images:eduSutil.jpg']}"
+				height="200" />
+ 	
+ 	
+ 	Nasceu e cresceu em Maringá, Paraná. Tem 25 anos e é programador
+						de sistemas na <a href="http://www.produtec.com.br"
+				target="_blank">Produtec Informática</a>. Trabalha com
+						desenvolvimento de sistemas web e mobile. Graduando do curso de
+						Informática da <a href="http://www.uem.br" target="_blank">Universidade
+				Estadual de Maringá</a>.
+			
+			</h:panelGrid>
 	</ui:define>
+
+
+
 </ui:composition>
 

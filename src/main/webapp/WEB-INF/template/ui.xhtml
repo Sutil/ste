@@ -7,38 +7,72 @@
 	<ui:define name="body">
 
 
-		<p:layout fullPage="true" styleClass="admin">
-			<p:layoutUnit position="north" size="70">
-				<h:form>
-					<p:menubar styleClass="menu" autoDisplay="true">
-						<p:menuitem value="HOME" url="/spring/home" style="width:100px;"
-							icon="ui-icon-home" styleClass="menu"></p:menuitem>
-						<p:menuitem value="SOBRE" url="#" style="width:100px;"
-							icon="ui-icon-clipboard" styleClass="menu"></p:menuitem>
-						<p:menuitem value="TRABALHOS" url="#" style="width:150px;"
-							icon="ui-icon-pencil" styleClass="menu"></p:menuitem>
-						<p:menuitem value="FACEBOOK" url="http://www.facebook.com/edusutil" style="width:150px;"
-							icon="ui-icon-mail-closed" styleClass="menu"></p:menuitem>
-						<p:menuitem value="GOOGLE+" url="https://plus.google.com/u/0/113085428541715297027/" style="width:150px;"
-							icon="ui-icon-mail-closed" styleClass="menu"></p:menuitem>	
-							
-							
-					</p:menubar>
-				</h:form>
-			</p:layoutUnit>
-			<p:layoutUnit position="west" size="200" header="Menu"
-				resizable="true" collapsible="true">
-				<ui:insert name="contentleft" />
-			</p:layoutUnit>
-			<p:layoutUnit position="center">
-				<ui:insert name="content" />
-			</p:layoutUnit>
-			<p:layoutUnit position="south" size="30"  resizable="true"  >
-				<h:outputText value="@Todos os direitos reservados - Eduardo Sutil - sutil.edu@gmail.com - " />
-				<a href="/ste/spring/topico">restrito</a>
-			</p:layoutUnit>
+		<div id="main">
+			<header>
+				<div id="logo">
+					<div id="logo_text">
+						<!-- class="logo_colour", allows you to change the colour of the text -->
+						<h1>
+							<a href="/ste/spring/home">Edu<span class="logo_colour">Sutil</span></a>
+						</h1>
+						<h2>Desenvolvedor de softwares</h2>
+					</div>
+				</div>
+				<nav>
+					<div id="menu_container">
+						<ul class="sf-menu" id="nav">
+							<li><a href="/ste/spring/home">Home</a></li>
+							<li><a href="/ste/spring/trabalhos">Trabalhos</a></li>
+							<li><a href="/ste/spring/academia">Academia</a></li>
+							<li><a href="#">Tutoriais</a></li>
+							<li><a href="#">Redes Sociais</a>
+								<ul>
+									<li><a href="http://facebook.com/edusutil" target="_blank">Facebook</a></li>
+									<li><a
+										href="https://plus.google.com/113085428541715297027/"
+										target="_blank">Google+</a></li>
+								</ul>
+								</li>
+								<li><a href="#">Repositórios</a>
+									<ul>
+										<li><a href="https://github.com/Sutil" target="_blank">GitHub</a></li>
+										<li><a href="https://bitbucket.org/sutil" target="_blank">BitBucket</a></li>
+									</ul>
+								</li>
+						</ul>
+					</div>
+				</nav>
+			</header>
+			<div id="site_content">
+				<ui:insert name="rigth"/>
+				<div class="content">
+					
+					
+						<ui:insert name="content" />
+						
 
-		</p:layout>
+					
+
+				</div>
+			</div>
+			<footer>
+				<p>
+					"todo o homem seja pronto para ouvir, tardio para falar, tardio
+					para se irar." <I>Tiago 1:19</I>
+				</p>
+			</footer>
+		</div>
+		<!-- javascript at the bottom for fast page loading -->
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/jquery.easing-sooper.js"></script>
+		<script type="text/javascript" src="js/jquery.sooperfish.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$('ul.sf-menu').sooperfish();
+			});
+		</script>
+
+
 
 	</ui:define>
 </ui:composition>
