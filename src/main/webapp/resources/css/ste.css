@@ -4,7 +4,10 @@ body {
 	min-width: 600px;
 }
 
-
+.ui-layout-unit .ui-layout-unit-content body{
+	opacity: 0.8;
+	
+}
 
 .label {
 	font-weight: 700;
