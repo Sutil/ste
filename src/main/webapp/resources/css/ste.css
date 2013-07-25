@@ -15,6 +15,7 @@ body {
 	text-align: right;
 }
 
+
 .topico {
 	font-size: 17px;
 	font-weight: bold;
@@ -80,3 +81,8 @@ body {
 .ui-state-error {
    color: #000 !important; // or some other color
 }
+
+.resposta {
+	font-size: 100px !important;
+}
+

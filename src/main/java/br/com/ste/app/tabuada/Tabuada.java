@@ -1,6 +1,10 @@
 package br.com.ste.app.tabuada;
 
-public class Tabuada {
+import java.io.Serializable;
+
+public class Tabuada implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	
 	private int a;
 	private int b;
@@ -29,9 +33,10 @@ public class Tabuada {
 	
 	
 	private static int sorteiaNumero(){
-		int min = 0;
-        int max = 10;
-        return new Integer((int)Math.random() * (max - min) + min);
+        int max = 11;
+        double random = Math.random();
+        int value = (int)(random*max);
+        return value;
 	}
 
 }

@@ -8,7 +8,12 @@
 	<persistence-context />
 
 	<view-state id="tabuada">
-		
+		<on-entry>
+		    <evaluate expression="tabuadaController.getTabuadaBean()" result="viewScope.bean" />
+		</on-entry>
+		<transition on="responder">
+		    
+		</transition>
 	</view-state>
 
 </flow>
