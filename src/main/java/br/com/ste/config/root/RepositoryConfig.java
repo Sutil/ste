@@ -11,9 +11,10 @@ import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import br.com.ste.app.conteudo.Conteudo;
+import br.com.ste.app.tabuada.Estatistica;
 import br.com.ste.app.topico.Topico;
 
-@EnableJpaRepositories(basePackageClasses = { Topico.class, Conteudo.class })
+@EnableJpaRepositories(basePackageClasses = { Topico.class, Conteudo.class, Estatistica.class })
 @EnableTransactionManagement(proxyTargetClass = true)
 @Configuration
 public class RepositoryConfig {

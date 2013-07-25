@@ -3,10 +3,12 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
-	template="/WEB-INF/template/blank.xhtml" >
+	template="/WEB-INF/template/blank.xhtml">
 
 
 	<ui:define name="body">
+
+
 
 
 		<div id="main">
@@ -23,64 +25,80 @@
 				<nav>
 					<div id="menu_container">
 						<ul class="sf-menu" id="nav">
-							
+
 						</ul>
 					</div>
 				</nav>
 			</header>
 			<div id="site_content">
-				<ui:insert name="rigth"/>
+				<div id="sidebar_container">
+
+					<div class="sidebar">
+						<h3>Situação atual</h3>
+						<h:panelGrid columns="1">
+							<h:outputText value="Número de acessos" styleClass="label" />
+							<h:outputText value="#{estatistica.acessos}" styleClass="label" />
+							<h:outputText value="Número de Respostas: " styleClass="label" />
+							<h:outputText value="#{estatistica.respondidas}" styleClass="label" />
+							<h:outputText value="Acertos" styleClass="label" />
+							<h:outputText value="#{estatistica.certas}" styleClass="label" />
+							<h:outputText value="Erros:" styleClass="label" />
+							
+						</h:panelGrid>
+					</div>
+				</div>
+
 				<div class="content">
-					
-					
-						<h1>Você sabe tabuada? Descubra agora!</h1>
 
 
-		<h:form>
+					<h1>Você sabe tabuada? Descubra agora!</h1>
 
 
-			<p:panel id="panel" header="Tabuada">
-			
-				<p:focus context="panel" for="resposta" />
-				
-				<h:panelGrid columns="8">
-					<h:outputText value="Respondidas: " styleClass="label" />
-					<h:outputText value="#{bean.respondidas}" />
-					
-					<p:spacer width="20"/>
-					
-					<h:outputText value="Acertos: " styleClass="label" />
-					<h:outputText value="#{bean.certas}" />
-					
-					<p:spacer width="20"/>
-					
-					<h:outputText value="Erros: " styleClass="label" />
-					<h:outputText value="#{bean.erradas}" />
-				</h:panelGrid>
-				
-
-				<h:panelGrid columns="5">
-					<h:outputText value="#{bean.tabuada.a}" style="font-size:100px;" />
-					<h:outputText value=" x " style="font-size:100px;" />
-					<h:outputText value="#{bean.tabuada.b}" style="font-size:100px;" />
-					<h:outputText value="=" style="font-size:100px;" />
-
-					<h:inputText id="resposta" value="#{bean.resposta}" required="true"
-						styleClass="resposta" size="3" tabindex="1" />
-						
-				</h:panelGrid>
-				<p:commandButton value="Ok" update="panel" 
-					actionListener="#{bean.responder}" />
+					<h:form>
 
 
-			</p:panel>
+						<p:panel id="panel" header="Tabuada">
+
+							<p:focus context="panel" for="resposta" />
+
+							<h:panelGrid columns="8">
+								<h:outputText value="Respondidas: " styleClass="label" />
+								<h:outputText value="#{bean.respondidas}" />
+
+								<p:spacer width="20" />
+
+								<h:outputText value="Acertos: " styleClass="label" />
+								<h:outputText value="#{bean.certas}" />
+
+								<p:spacer width="20" />
+
+								<h:outputText value="Erros: " styleClass="label" />
+								<h:outputText value="#{bean.erradas}" />
+							</h:panelGrid>
+
+
+							<h:panelGrid columns="5">
+								<h:outputText value="#{bean.tabuada.a}" style="font-size:100px;" />
+								<h:outputText value=" x " style="font-size:100px;" />
+								<h:outputText value="#{bean.tabuada.b}" style="font-size:100px;" />
+								<h:outputText value="=" style="font-size:100px;" />
+
+								<h:inputText id="resposta" value="#{bean.resposta}"
+									required="true" styleClass="resposta" size="3" tabindex="1" />
+
+							</h:panelGrid>
+							<p:commandButton value="Ok" update="panel" action="atualizar"
+								actionListener="#{bean.responder}" />
+
+
+						</p:panel>
 
 
 
-		</h:form>
-						
+					</h:form>
 
-					
+
+
 
 				</div>
 			</div>
@@ -91,7 +109,7 @@
 				</p>
 			</footer>
 		</div>
-		
+
 
 
 

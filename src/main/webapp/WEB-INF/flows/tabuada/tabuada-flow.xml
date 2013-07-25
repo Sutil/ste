@@ -10,9 +10,10 @@
 	<view-state id="tabuada">
 		<on-entry>
 		    <evaluate expression="tabuadaController.getTabuadaBean()" result="viewScope.bean" />
+		    <evaluate expression="tabuadaController.getEstatistica()" result="viewScope.estatistica" />
 		</on-entry>
-		<transition on="responder">
-		    
+		<transition on="atualizar">
+		    <evaluate expression="estatistica.atualizar(bean)" />
 		</transition>
 	</view-state>
 

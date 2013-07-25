@@ -1,12 +1,14 @@
 package br.com.ste.app.tabuada;
 
-import static com.google.common.base.Preconditions.checkArgument;
+import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.Serializable;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+
+import br.com.ste.app.tabuada.web.EstatisticaBean;
 
 import com.google.common.base.Objects;
 
@@ -23,18 +25,21 @@ public class Estatistica implements Serializable{
 	
 	private int certas;
 	
+	private int acesso;
+	
 	Estatistica(){
 	}
 	
-	private Estatistica(int respondidas, int certas) {
-		this.respondidas = respondidas;
-		this.certas = certas;
+	private Estatistica(EstatisticaBean e) {
+		this.respondidas = e.getRespondidas();
+		this.certas = e.getCertas();
+		this.id = e.getId();
+		this.acesso = e.getAcessos();
 	}
 	
-	public static Estatistica newInstance(int respondidas, int certas) {
-		checkArgument(respondidas >= 0);
-		checkArgument(certas >= 0);
-		return new Estatistica(respondidas, certas);
+	public static Estatistica newInstance(EstatisticaBean e) {
+		checkNotNull(e);
+		return new Estatistica(e);
 	}
 	
 	@Override
@@ -65,5 +70,12 @@ public class Estatistica implements Serializable{
 		return respondidas;
 	}
 	
+	public int getAcesso() {
+		return acesso;
+	}
+	
+	public Long getId() {
+		return id;
+	}
 
 }
