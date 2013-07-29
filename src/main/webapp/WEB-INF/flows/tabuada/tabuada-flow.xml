@@ -13,7 +13,12 @@
 		    <evaluate expression="tabuadaController.getEstatistica()" result="viewScope.estatistica" />
 		</on-entry>
 		<transition on="atualizar">
-		    <evaluate expression="estatistica.atualizar(bean)" />
+		    <evaluate expression="tabuadaController.atualizar(bean)" />
+		    <evaluate expression="bean.responder()" />
+		</transition>
+		<transition on="parar">
+		    <evaluate expression="tabuadaController.parar()" result="viewScope.bean" />
+		    <evaluate expression="tabuadaController.getEstatistica()" result="viewScope.estatistica" />
 		</transition>
 	</view-state>
 

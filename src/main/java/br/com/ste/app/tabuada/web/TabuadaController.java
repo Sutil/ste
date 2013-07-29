@@ -28,6 +28,7 @@ public class TabuadaController {
 			System.out.println("JA EXISTE ESTATISTICA");
 			Estatistica estatistica = lista.get(0);
 			EstatisticaBean bean = EstatisticaBean.instance(estatistica);
+			bean.addAcesso();
 			System.out.println(bean.toString());
 			estatistica = Estatistica.newInstance(bean);
 			estatisticaRepository.save(estatistica);
@@ -35,6 +36,7 @@ public class TabuadaController {
 		}
 		System.out.println("AINDA NÃO EXISTE");
 		EstatisticaBean bean = EstatisticaBean.instance();
+		bean.addAcesso();
 		System.out.println(bean.toString());
 		Estatistica estatistica = Estatistica.newInstance(bean);
 		estatisticaRepository.save(estatistica);
@@ -44,6 +46,14 @@ public class TabuadaController {
 	public void atualizarEstatistica(EstatisticaBean e) {
 		Estatistica estatistica = Estatistica.newInstance(e);
 		estatisticaRepository.save(estatistica);
+	}
+	
+	public void atualizar(TabuadaBean bean) {
+		EstatisticaBean.instance().atualizar(bean);
+	}
+	
+	public TabuadaBean parar() {
+		return TabuadaBean.newInstance("");
 	}
 
 }

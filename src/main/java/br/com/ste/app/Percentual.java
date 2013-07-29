@@ -27,12 +27,20 @@ public class Percentual implements Serializable{
 		return new Percentual(valor);
 	}
 	
+	public static Percentual newInstance(int total, int parcial) {
+		BigDecimal percentual = BigDecimal.ZERO;
+		if(total > 0) {
+			percentual = new BigDecimal(parcial).multiply(new BigDecimal(100)).divide(new BigDecimal(total), RoundingMode.HALF_EVEN);
+		}
+		return new Percentual(percentual);
+	}
+	
 	public boolean isZero() {
 		return this == ZERO_POR_CENTO;
 	}
 	
 	public String formatScreen(){
-		DecimalFormat format = new DecimalFormat("#,##0");
+		DecimalFormat format = new DecimalFormat("#,##0.0");
 		return format.format(valor)+"%";
 	}
 

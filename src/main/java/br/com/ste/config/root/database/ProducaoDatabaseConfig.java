@@ -30,7 +30,7 @@ public class ProducaoDatabaseConfig implements DatabaseConfig {
 //		dataSource.setUrl("jdbc:oracle:thin:@(DESCRIPTION = (ADDRESS = (PROTOCOL = TCP)(HOST = mrsa-scan.grupomorenarosa.intranet)(PORT = 1521)) (FAILOVER = ON) (CONNECT_DATA = (SERVER = DEDICATED)(SERVICE_NAME = mrosa)(FAILOVER_MODE = (TYPE = SELECT) (METHOD = BASIC) (RETRIES = 64) (DELAY = 4))))");
 		dataSource.setUrl("jdbc:mysql://localhost:3306/site");
 		dataSource.setUsername("root");
-		dataSource.setPassword("fidelidade");
+		dataSource.setPassword("Edu13546");
 		dataSource.setTestOnBorrow(true);
 		dataSource.setTestOnReturn(true);
 		dataSource.setTestWhileIdle(true);

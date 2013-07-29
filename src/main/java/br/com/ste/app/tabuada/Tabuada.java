@@ -17,6 +17,7 @@ public class Tabuada implements Serializable{
 	public static Tabuada newInstace(){
 		return new Tabuada(sorteiaNumero(), sorteiaNumero());
 	}
+
 	
 	public int getA() {
 		return a;
@@ -33,7 +34,7 @@ public class Tabuada implements Serializable{
 	
 	
 	private static int sorteiaNumero(){
-        int max = 11;
+        int max = 10;
         double random = Math.random();
         int value = (int)(random*max);
         return value;

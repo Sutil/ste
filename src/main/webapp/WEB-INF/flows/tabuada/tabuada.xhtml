@@ -35,16 +35,26 @@
 
 					<div class="sidebar">
 						<h3>Situação atual</h3>
-						<h:panelGrid columns="1">
-							<h:outputText value="Número de acessos" styleClass="label" />
-							<h:outputText value="#{estatistica.acessos}" styleClass="label" />
-							<h:outputText value="Número de Respostas: " styleClass="label" />
-							<h:outputText value="#{estatistica.respondidas}" styleClass="label" />
-							<h:outputText value="Acertos" styleClass="label" />
-							<h:outputText value="#{estatistica.certas}" styleClass="label" />
-							<h:outputText value="Erros:" styleClass="label" />
-							
-						</h:panelGrid>
+
+						<h:form id="formEst">
+							<h:panelGrid columns="1">
+								<h:outputText value="Número de acessos" styleClass="label" />
+								<h:outputText value="#{estatistica.acessos}" styleClass="label" />
+								<h:outputText value="Número de Respostas: " styleClass="label" />
+								<h:outputText value="#{estatistica.respondidas}"
+									styleClass="label" />
+
+								<h:outputText value="Acertos" styleClass="label"
+									style="color: #00FF00" />
+								<h:outputText value="#{estatistica.percentualAcerto}"
+									styleClass="label" style="color: #00FF00" />
+								<h:outputText value="Erros:" styleClass="label"
+									style="color: #FF0000" />
+								<h:outputText value="#{estatistica.percentualErro}"
+									styleClass="label" style="color: #FF0000" />
+
+							</h:panelGrid>
+						</h:form>
 					</div>
 				</div>
 
@@ -61,19 +71,25 @@
 
 							<p:focus context="panel" for="resposta" />
 
-							<h:panelGrid columns="8">
+							<h:panelGrid columns="12">
 								<h:outputText value="Respondidas: " styleClass="label" />
 								<h:outputText value="#{bean.respondidas}" />
 
 								<p:spacer width="20" />
 
 								<h:outputText value="Acertos: " styleClass="label" />
-								<h:outputText value="#{bean.certas}" />
+								<h:outputText id="cta" value="#{bean.certas}" />
 
 								<p:spacer width="20" />
 
 								<h:outputText value="Erros: " styleClass="label" />
 								<h:outputText value="#{bean.erradas}" />
+
+								<p:spacer width="10" />
+
+								<h:outputText value="Tempo:" styleClass="label"
+									style="font-size:25px;" />
+								<h:outputText id="tpo" value="0" style="font-size:25px;" />
 							</h:panelGrid>
 
 
@@ -84,11 +100,14 @@
 								<h:outputText value="=" style="font-size:100px;" />
 
 								<h:inputText id="resposta" value="#{bean.resposta}"
-									required="true" styleClass="resposta" size="3" tabindex="1" />
+									styleClass="resposta" size="3" tabindex="1" />
+
 
 							</h:panelGrid>
-							<p:commandButton value="Ok" update="panel" action="atualizar"
-								actionListener="#{bean.responder}" />
+							<p:commandButton id="bt" value="Ok" update="panel"
+								action="atualizar" oncomplete="init()" />
+							<p:commandButton id="pare" value="Parar" update="panel, :formEst"
+								action="parar" oncomplete="parar()" />
 
 
 						</p:panel>
@@ -110,7 +129,44 @@
 			</footer>
 		</div>
 
+		<script>
+			var tempo = 8;
+			var fase = 1;
+			var count = 0;
+			var interval = setInterval(function() {
+				myTimer()
+			}, 1000);
 
+			function init() {
+				count++;
+				getFase();
+				tempo = 8 - fase;
+				parar();
+				interval = setInterval(function() {
+					myTimer()
+				}, 1000);
+			}
+
+			function myTimer() {
+				tempo--;
+				if (tempo == 0) {
+					parar();
+					document.getElementById("j_idt21:bt").click();
+				}
+				document.getElementById("j_idt21:tpo").innerHTML = tempo;
+			}
+			function parar() {
+				clearInterval(interval);
+			}
+			function getFase() {
+				if (count % 10 == 0) {
+					if (fase != 6) {
+						fase++;
+					}
+
+				}
+			}
+		</script>
 
 
 	</ui:define>
